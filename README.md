@@ -16,7 +16,7 @@ the bot logic is quite simple:
   ```npm install```
 - from the [twitch api](https://dev.twitch.tv/docs/authentication/register-app) (link to the doc to get the token) get the bot token and the client_id
 (small tips to get the channel id that you want, this [chrome extention](https://chrome.google.com/webstore/detail/twitch-username-and-user/laonpoebfalkjijglbjbnkfndibbcoon/related) will help you)
-- execute the follower.js file that setup the follower.json ```node ./follower.json ```
+- execute the follower.js file that setup the follower.json ```node ./follower.js ```
 - than if you want to create an .env file with the bot data you can do it so that you can use my bot without doing a lot of chaning 
 (Remember to use the same name that i have use, if you want to use my same structure)
 
