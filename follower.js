@@ -1,7 +1,7 @@
 const fs = require("fs")
 const env = require("dotenv").config()
 
-let followerFile = "./followers.json"
+let followerFile = "./follower.json"
 
 async function get(url) {
     const response = await fetch(url,
