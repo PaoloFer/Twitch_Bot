@@ -8,6 +8,7 @@ const fs = require("fs");
 let username = process.env.USERNAME;
 let password = process.env.PASSWORD;
 let channel = process.env.CHANNEL;
+let followerFile = "./follower.json"
 
 const option = {
     options: { debug: true },
@@ -85,7 +86,7 @@ async function get(url) {
   function CheckUnfollow(old_data_file,new_data){
     const unfollow = [];
     
-    let oldData = JSON.parse(fs.readFileSync("./test.json").toString());
+    let oldData = JSON.parse(fs.readFileSync(followerFile).toString());
   
     for (let i in oldData.user){
       if (!new_data.includes(oldData.user[i])){
@@ -103,7 +104,7 @@ async function get(url) {
         };
         new_json.user=list;
         let string = JSON.stringify(new_json,null,4);
-        fs.writeFileSync("test.json",string);
+        fs.writeFileSync(followerFile,string);
         console.log(unfollow);
   
         return unfollow
@@ -117,7 +118,7 @@ async function get(url) {
         };
         new_json.user=list;
         let string = JSON.stringify(new_json,null,4);
-        fs.writeFileSync("test.json",string);
+        fs.writeFileSync(followerFile,string);
         return []
     }
     
@@ -130,7 +131,7 @@ function sleep(ms) {
 async function main(){
   while(true){
   let new_data = await UpdateRecentFollower(process.env.CHANNEL_ID,process.env.CLIENT_ID)
-    const array = CheckUnfollow("test.json",new_data);
+    const array = CheckUnfollow(followerFile,new_data);
     if (array.length != 0){
       let message= "";
       for (let element in array){
